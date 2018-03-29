@@ -1,0 +1,23 @@
+{
+  "name": "flux-homework",
+  "version": "1.0.0",
+  "description": "Flux implementation example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2gnc/flux-homework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2gnc/flux-homework/issues"
+  },
+  "homepage": "https://github.com/2gnc/flux-homework#readme",
+  "dependencies": {
+    "webpack": "^4.4.1"
+  }
+}
