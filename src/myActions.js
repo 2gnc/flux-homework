@@ -1,6 +1,5 @@
 import actionTypes from './myActionsTypes';
 import {logger} from './LittleFlux/utils/logger'
-//import dispatcher from './MyDispatcher';
 
 const Actions = {
   sendData(dispatcher, text) {

@@ -25,17 +25,25 @@
 }
 
 .view-stub__label {
-    width: 483px;
+    width: 50vw;
     background-color: #ddd;
+    color: black;
+    padding: 10px 5px;
+    line-height: 28px;
+    max-height: 25vh;
+    overflow: auto;
+}
+
+.log {
+    width: 50vw;
+    max-height: 50vh;
+    overflow: auto;
+    background-color: #eee;
     color: black;
     padding: 10px 5px;
     line-height: 28px;
 }
 
-.log {
-    width: 483px;
-    background-color: #eee;
-    color: black;
-    padding: 10px 5px;
-    line-height: 28px;
+.view-stub__res {
+    font-weight: bolder;
 }

@@ -1,20 +1,13 @@
-export default class SendToServer {
-  sendData(data) {
-    console.log(data);
-    const event = new CustomEvent('dataIsSent', {
-      detail: data,
-    });
-    document.dispatchEvent(event); 
-  }
-}
+import { logger } from "./logger";
 
 
-// Пример обработки события dataIsSent. Рекомендуется изменить API модуля так,
-// чтобы вызова события через document не было
+const sendToServer = (data) => {
+  return new Promise((res, rej) => {
+    logger('SendToServer: отправляю данные на сервер');
+    setTimeout(() => {
+      res(`данные получены, ключ ${Math.random()}`);
+    },Math.random() * 1000);
+  });
+};
 
-// function test() {
-//     document.addEventListener('dataIsSent', function(event) {
-//         console.log('event got ' + event.detail);
-//     });
-//     sendToServer('mydata');
-// }
+export default sendToServer;

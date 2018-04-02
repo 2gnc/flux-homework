@@ -20,7 +20,7 @@ export default class Store extends Emitter {
     let newState;
 
     if(typeof(prop) !== 'string') {
-      logger('Store: ошибка! Свойство должно быть строкой');
+      logger('Store: ошибка! Имя свойства должно быть строкой');
       return false;
     }
 

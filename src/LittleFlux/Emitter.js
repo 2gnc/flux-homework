@@ -57,7 +57,7 @@ export default class Emitter {
 
     this.events[event].listeners.forEach(itm => {
       itm.apply(this, params);
-      logger(`Выполняю ${itm}`);
+      logger(`Emitter: запускаю колбэк из подписки`);
     })
   }
 }

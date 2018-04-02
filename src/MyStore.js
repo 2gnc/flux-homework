@@ -1,24 +1,34 @@
 import Store from './LittleFlux/Store';
+import {logger} from './LittleFlux/utils/logger';
+import sender from './LittleFlux/utils/SendToServer';
+import actions from './myActions';
+
 
 export default class MyStore extends Store {
-  constructor() {
+  constructor(dispatcher) {
     super();
     this.state = {
       log: [],
-    }
+      serverResp: '',
+    };
+    this.dispatcher = dispatcher;
   }
 
-  test() {
-    console.log('test');
+  sendData(data) {
+    logger('Store: отправляю данные');
+    sender(data)
+      .then((result) => {
+        this.setState('serverResp', result);
+        actions.getData(this.dispatcher, result);
+        return result;
+      })
+      .catch(() => {
+        logger('Что-то пошло не так')
+      }
+    ); 
   }
 
-
-}
-
-
-
-// умеет подписываться на события (унаследовано)
-// умеет обрабатывать данные
-// умеет обрабатывать бизнес - логику
-// умеет оповещать о изменениях... вьюшки и диспетчер
-// хранит состояние приложения 
+  getData(data) {
+    logger(`Store: ответ получен "${this.getState('serverResp')}"`, 0);
+  }
+} 

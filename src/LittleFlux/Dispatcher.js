@@ -28,9 +28,8 @@ export default class Dispatcher extends Emitter {
 
   dispatch(event) {
     logger(`Dispatcher: оповестили хранилища о событии ${event.type}`);
-    // this.stores.forEach(store => {
-    //   store.fire(event);
-    // })
-    console.log(event);
+    this.stores.forEach(store => {
+      store.fire(event.type);
+    })
   }
 }
