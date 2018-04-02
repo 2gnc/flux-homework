@@ -19,11 +19,6 @@ export default class MyStore extends Store {
     actions.logMe(this.dispatcher, 'рраз', 0 ); 
   }
 
-  // test() {
-  //   console.log('tets');
-  //   actions.log(this.dispatcher, 'Установлена подписка', 0);
-  // }
-
   sendData(data) {
     logger('Store: отправляю данные');
     sender(data)
@@ -42,7 +37,13 @@ export default class MyStore extends Store {
     logger(`Store: ответ получен "${this.getState('serverResp')}"`, 0);
   }
 
-  log(message, type) {
-    console.log('***', message, type);
+  log(message) {
+    // логгер встроен в стор
+    // 0 - зовем метод вью А
+    // 1 - зовем метод вью Б
+    // вью рендерит лог
+    // как определить, какую вьюху вызывать и какой метод в ней? 
+
+    //console.log('***', message[0], message[1]);
   }
 } 
