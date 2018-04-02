@@ -1,8 +1,9 @@
 import actionTypes from './myActionsTypes';
-import dispatcher from './MyDispatcher';
+import {logger} from './LittleFlux/utils/logger'
+//import dispatcher from './MyDispatcher';
 
 const Actions = {
-  sendData(text) {
+  sendData(dispatcher, text) {
     dispatcher.dispatch({
       type: actionTypes.DATA_SEND,
       text,
@@ -10,7 +11,7 @@ const Actions = {
     logger(`Actions: данные отправлены (${text})`);
   },
 
-  getData(response) {
+  getData(dispatcher, response) {
     dispatcher.dispatch({
       type: actionTypes.RESPONCE_RECEIVED,
       response,

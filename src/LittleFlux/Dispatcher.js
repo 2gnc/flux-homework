@@ -18,7 +18,7 @@ export default class Dispatcher extends Emitter {
       this.stores.push(store);
       store.id = this.nextStoreId;
       this.idCounter();
-      logger(`Dispatcher: зарегистрирован стор с ИД ${store.id}`);
+      logger(`Dispatcher: зарегистрировано хранилище с ИД ${store.id}`);
     }
   }
 
@@ -28,8 +28,9 @@ export default class Dispatcher extends Emitter {
 
   dispatch(event) {
     logger(`Dispatcher: оповестили хранилища о событии ${event.type}`);
-    this.stores.forEach(store => {
-      store.fire(event);
-    })
+    // this.stores.forEach(store => {
+    //   store.fire(event);
+    // })
+    console.log(event);
   }
 }

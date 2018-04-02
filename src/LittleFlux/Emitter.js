@@ -7,8 +7,6 @@ export default class Emitter {
   }
 
   on(event, cb) {
-
-    logger('запуск Emitter - установка слушателя');
     
     //проверяем, чтобы колбэк был функцией
     if(typeof(cb) !== 'function') {
@@ -31,14 +29,14 @@ export default class Emitter {
     // регистрируем слушатель
     this.events[event].listeners.push(cb);
 
-    logger(`Подписка на событие ${event.name}`)
+    logger(`Подписка на событие ${event}`)
   }
 
   off(event, listener) {
     
     // проверяем, что событие есть
     if(!this.events[event]) {
-      logger(`Ошибка: нет такого события ${event.name}`)
+      logger(`Ошибка: нет такого события ${event}`)
       return false;
     }
 
