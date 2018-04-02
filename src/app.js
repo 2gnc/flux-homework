@@ -16,6 +16,7 @@ appDispatcher.register(appStore);
 // подписались на события
 appStore.on(types.DATA_SEND, appStore.sendData);
 appStore.on(types.RESPONCE_RECEIVED, appStore.getData);
+appStore.on(types.MAKE_LOG, appStore.log);
 
 appView.listenUi(
   button, 
