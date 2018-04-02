@@ -61,14 +61,5 @@ export default class Emitter {
         logger(`Emitter: запускаю колбэк из подписки ${params}`);
       })
     }, 500);
-    // if(!this.events[event]) {
-    //   logger(`События ${event} не существует`);
-    //   return false;
-    // }
-
-    // this.events[event].listeners.forEach(itm => {
-    //   itm.apply(this, params);
-    //   logger(`Emitter: запускаю колбэк из подписки ${params}`);
-    // })
   }
 }

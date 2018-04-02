@@ -1,8 +1,10 @@
 export default class View {
-  constructor() {};
+  constructor() {
+    this.name = 'View';
+  };
 
   render(parent, template, data) {
-    
+
   }
 
 }

@@ -5,8 +5,8 @@ import types from './myActionsTypes';
 import View from './MyView';
 
 const appDispatcher = new Dispatcher();
-const appStore = new Store(appDispatcher);
-const appView = new View();  
+const appView = new View(appDispatcher);
+const appStore = new Store(appDispatcher, [appView]);
 
 const button = document.querySelector('.view-stub__apply');
 const inpt = document.querySelector('.view-stub__input');
@@ -19,9 +19,11 @@ appStore.on(types.RESPONCE_RECEIVED, appStore.getData);
 appStore.on(types.MAKE_LOG, appStore.log);
 
 appView.listenUi(
-  button, 
-  'click', 
+  button,
+  'click',
   (e) => {
     actions.sendData(appDispatcher, inpt.value);
     inpt.value = '';
   });
+
+  //console.log(appStore);

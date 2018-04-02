@@ -5,18 +5,20 @@ import actions from './myActions';
 
 
 export default class MyStore extends Store {
-  constructor(dispatcher) {
+  constructor(dispatcher, views) {
     super();
     this.state = {
       log: [],
       serverResp: '',
     };
     this.dispatcher = dispatcher;
+    this.views = views;
+    actions.logMe(this.dispatcher, 'Инициирован Store', 1 ); 
   }
 
   on(event, cb) {
     super.on(event, cb);
-    actions.logMe(this.dispatcher, 'рраз', 0 ); 
+    actions.logMe(this.dispatcher, 'Store подписался на событие', 0 ); 
   }
 
   sendData(data) {
@@ -37,13 +39,13 @@ export default class MyStore extends Store {
     logger(`Store: ответ получен "${this.getState('serverResp')}"`, 0);
   }
 
-  log(message) {
+  log(data) {
     // логгер встроен в стор
     // 0 - зовем метод вью А
     // 1 - зовем метод вью Б
     // вью рендерит лог
     // как определить, какую вьюху вызывать и какой метод в ней? 
 
-    //console.log('***', message[0], message[1]);
+    console.log('***NEW', data, data[0], data[1]);
   }
 } 

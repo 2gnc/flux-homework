@@ -1,11 +1,12 @@
 import View from './LittleFlux/View';
-import Actions from './myActions';
+import actions from './myActions';
 import { logger } from './LittleFlux/utils/logger';
 
 class MyView extends View {
-  constructor() {
+  constructor(dispatcher) {
     super();
-    logger('View: создан экземпляр класса View');
+    this.dispatcher = dispatcher;
+    actions.logMe(this.dispatcher, `${this.name}: создан экземпляр класса`, 1);
   }
 
   render(parent, template, data) {
