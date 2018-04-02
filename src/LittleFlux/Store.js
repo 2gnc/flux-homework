@@ -2,13 +2,6 @@ import Dispatcher from './Dispatcher';
 import Emitter from './Emitter'
 import {logger} from './utils/logger';
 
-
-// умеет подптсываться на события (унаследовано)
-// умеет обрабатывать данные
-// умеет обрабатывать бизнес - логику
-// умеет оповещать о изменениях... вьюшки и диспетчер
-// хранит состояние приложения 
-
 export default class Store extends Emitter {
   
   constructor() {
@@ -18,5 +11,24 @@ export default class Store extends Emitter {
     logger('Store: Создан экземпляр класса Store');
   }
 
-  //getState = prop => this.state[prop];
+  getState(prop) {
+    return this.state[prop];
+  };
+
+  setState(prop, val) {
+    let oldState;
+    let newState;
+
+    if(typeof(prop) !== 'string') {
+      logger('Store: ошибка! Свойство должно быть строкой');
+      return false;
+    }
+
+    if(this.state[prop]) {
+      oldState = this.getState(prop); 
+    }
+
+    this.state[prop] = val;
+    newState = this.getState(prop);
+  }
 };
