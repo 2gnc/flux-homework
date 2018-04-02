@@ -50,14 +50,26 @@ export default class Emitter {
 
   fire(event, ...params) {
     // если event не существует
-    if(!this.events[event]) {
-      logger(`События ${event} не существует`);
-      return false;
-    }
+    setTimeout(() => {
+      if(!this.events[event]) {
+        logger(`События ${event} не существует`);
+        return false;
+      }
+  
+      this.events[event].listeners.forEach(itm => {
+        itm.apply(this, params);
+        logger(`Emitter: запускаю колбэк из подписки ${params}`);
+        console.log('!!!!!', params);
+      })
+    }, 500);
+    // if(!this.events[event]) {
+    //   logger(`События ${event} не существует`);
+    //   return false;
+    // }
 
-    this.events[event].listeners.forEach(itm => {
-      itm.apply(this, params);
-      logger(`Emitter: запускаю колбэк из подписки ${params}`);
-    })
+    // this.events[event].listeners.forEach(itm => {
+    //   itm.apply(this, params);
+    //   logger(`Emitter: запускаю колбэк из подписки ${params}`);
+    // })
   }
 }

@@ -34,11 +34,11 @@ const Actions = {
  * @param {String} message Текст сообщения
  * @param {Number} type Тип лога. 0 - лог в списке логов системы, 1 - в списке логов сервера.
  */
-  log(dispatcher, message, typeOf) {
+  logMe(dispatcher, ...args) {
     dispatcher.dispatch({
       type: actionTypes.MAKE_LOG,
-      message,
-      typeOf
+      message: args[0],
+      typeOf: args[1]
     })
   }, 
 

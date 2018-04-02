@@ -25,4 +25,3 @@ appView.listenUi(
     actions.sendData(appDispatcher, inpt.value);
     inpt.value = '';
   });
-

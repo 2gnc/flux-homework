@@ -16,9 +16,13 @@ export default class MyStore extends Store {
 
   on(event, cb) {
     super.on(event, cb);
-    actions.log(this.dispatcher, 'Установлена подписка', 0);
-    //console.log('!!!!!');
+    actions.logMe(this.dispatcher, 'рраз', 0 ); 
   }
+
+  // test() {
+  //   console.log('tets');
+  //   actions.log(this.dispatcher, 'Установлена подписка', 0);
+  // }
 
   sendData(data) {
     logger('Store: отправляю данные');
