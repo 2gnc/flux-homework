@@ -10,13 +10,13 @@ export default class Emitter {
     
     //проверяем, чтобы колбэк был функцией
     if(typeof(cb) !== 'function') {
-      logger('Ошибка: колбэк должен быть функцией');
+      console.log('Ошибка: колбэк должен быть функцией');
       return false;
     }
     
     //провеяем, чтобы событие было строкой
     if(typeof(event) !== 'string') {
-      logger(`Ошибка: событие должно быть строкой, а не ${typeof(event)}`);
+      console.log(`Ошибка: событие должно быть строкой, а не ${typeof(event)}`);
       return false;
     }
     
@@ -24,19 +24,19 @@ export default class Emitter {
     if (!this.events[event]) {
       this.events[event] = {
           listeners: []
-      }
+      };
     }
     // регистрируем слушатель
     this.events[event].listeners.push(cb);
 
-    logger(`Подписка на событие ${event}`)
+    //logger(`Подписка на событие ${event}`)
   }
 
   off(event, listener) {
     
     // проверяем, что событие есть
     if(!this.events[event]) {
-      logger(`Ошибка: нет такого события ${event}`)
+      console.log(`Ошибка: нет такого события ${event}`)
       return false;
     }
 
@@ -45,7 +45,7 @@ export default class Emitter {
       return listener.toString() !== callback.toString(); 
     });
 
-    logger(`Отписка от события ${event.name}`)
+    //logger(`Отписка от события ${event.name}`)
   }
 
   fire(event, ...params) {
@@ -57,7 +57,7 @@ export default class Emitter {
 
     this.events[event].listeners.forEach(itm => {
       itm.apply(this, params);
-      logger(`Emitter: запускаю колбэк из подписки`);
+      logger(`Emitter: запускаю колбэк из подписки ${params}`);
     })
   }
 }

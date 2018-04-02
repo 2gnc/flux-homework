@@ -5,8 +5,8 @@ const Actions = {
 
   /**
    * @name sendData
-   * @param {Dispatcher} dispatcher 
-   * @param {String} text 
+   * @param {Dispatcher} dispatcher Ссылка на диспатчер
+   * @param {String} text Текст, отправленный на сервер
    */
   sendData(dispatcher, text) {
     dispatcher.dispatch({
@@ -18,8 +18,8 @@ const Actions = {
 
 /**
  * @name getData
- * @param {Dispatcher} dispatcher 
- * @param {String} response 
+ * @param {Dispatcher} dispatcher Ссылка на диспатчер
+ * @param {String} response Текст ответа сервера
  */
   getData(dispatcher, response) {
     dispatcher.dispatch({
@@ -30,15 +30,15 @@ const Actions = {
 
 /**
  * 
- * @param {Dispatcher} dispatcher 
- * @param {String} message 
- * @param {Number} type 
+ * @param {Dispatcher} dispatcher Ссылка на диспатчер
+ * @param {String} message Текст сообщения
+ * @param {Number} type Тип лога. 0 - лог в списке логов системы, 1 - в списке логов сервера.
  */
-  log(dispatcher, message, type) {
+  log(dispatcher, message, typeOf) {
     dispatcher.dispatch({
       type: actionTypes.MAKE_LOG,
       message,
-      type
+      typeOf
     })
   }, 
 

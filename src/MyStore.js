@@ -14,6 +14,12 @@ export default class MyStore extends Store {
     this.dispatcher = dispatcher;
   }
 
+  on(event, cb) {
+    super.on(event, cb);
+    actions.log(this.dispatcher, 'Установлена подписка', 0);
+    //console.log('!!!!!');
+  }
+
   sendData(data) {
     logger('Store: отправляю данные');
     sender(data)
@@ -30,5 +36,9 @@ export default class MyStore extends Store {
 
   getData(data) {
     logger(`Store: ответ получен "${this.getState('serverResp')}"`, 0);
+  }
+
+  log(message, type) {
+    console.log('***', message, type);
   }
 } 
