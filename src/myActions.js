@@ -1,5 +1,4 @@
 import actionTypes from './myActionsTypes';
-import {logger} from './LittleFlux/utils/logger'
 
 const Actions = {
 
@@ -13,10 +12,9 @@ const Actions = {
       type: actionTypes.DATA_SEND,
       text,
     });
-    logger(`Actions: данные отправлены (${text})`);
   },
 
-/**
+  /**
  * @name getData
  * @param {Dispatcher} dispatcher Ссылка на диспатчер
  * @param {String} response Текст ответа сервера
@@ -28,8 +26,8 @@ const Actions = {
     });
   },
 
-/**
- * 
+  /**
+ *
  * @param {Dispatcher} dispatcher Ссылка на диспатчер
  * @param {String} message Текст сообщения
  * @param {Number} type Тип лога. 0 - лог в списке логов системы, 1 - в списке логов сервера.
@@ -37,10 +35,10 @@ const Actions = {
   logMe(dispatcher, ...params) {
     dispatcher.dispatch({
       type: actionTypes.MAKE_LOG,
-      params
-    })
-  }, 
+      params,
+    });
+  },
 
-}
+};
 
 export default Actions;

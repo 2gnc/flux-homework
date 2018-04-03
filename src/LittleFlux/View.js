@@ -1,7 +1,10 @@
-export default class View {
+import Emitter from './Emitter';
+
+export default class View extends Emitter {
+
   constructor() {
-    this.name = 'View';
-  };
+    super();
+  }
 
   render(parent, template, data) {
 

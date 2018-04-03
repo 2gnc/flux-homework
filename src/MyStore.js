@@ -1,10 +1,9 @@
 import Store from './LittleFlux/Store';
-import {logger} from './LittleFlux/utils/logger';
-import sender from './LittleFlux/utils/SendToServer';
 import actions from './myActions';
 
 
 export default class MyStore extends Store {
+
   constructor(dispatcher, views) {
     super();
     this.state = {
@@ -13,30 +12,34 @@ export default class MyStore extends Store {
     };
     this.dispatcher = dispatcher;
     this.views = views;
-    actions.logMe(this.dispatcher, 'Инициирован Store', 1 ); 
+    this.utils = [];
+  }
+
+  isMounted() {
+    actions.logMe(this.dispatcher, 'Инициирован Store', 0);
   }
 
   on(event, cb) {
     super.on(event, cb);
-    actions.logMe(this.dispatcher, 'Store подписался на событие', 0 ); 
+    actions.logMe(this.dispatcher, 'Store подписался на событие', 0);
   }
 
   sendData(data) {
-    logger('Store: отправляю данные');
-    sender(data)
+    actions.logMe(this.dispatcher, 'Store отправляет данные', 0);
+    this.utils[0].sendToServer(data)
       .then((result) => {
         this.setState('serverResp', result);
         actions.getData(this.dispatcher, result);
         return result;
       })
-      .catch(() => {
-        logger('Что-то пошло не так')
-      }
-    ); 
+      .catch((err) => {
+        console.log()(`Что-то пошло не так ${err}`);
+      });
   }
 
   getData(data) {
-    logger(`Store: ответ получен "${this.getState('serverResp')}"`, 0);
+    actions.logMe(this.dispatcher, `Store получил ответ: ${this.getState('serverResp')}${data || ''}`, 0);
+    return data;
   }
 
   log(data) {
@@ -44,8 +47,9 @@ export default class MyStore extends Store {
     // 0 - зовем метод вью А
     // 1 - зовем метод вью Б
     // вью рендерит лог
-    // как определить, какую вьюху вызывать и какой метод в ней? 
+    // как определить, какую вьюху вызывать и какой метод в ней?
 
     console.log('***NEW', data, data[0], data[1]);
   }
-} 
+
+}
