@@ -25,9 +25,9 @@ appStore.on(types.MAKE_LOG, appStore.log);
 appView.listenUi(
   button,
   'click',
-/* eslint-disable no-unused-vars */
+  /* eslint-disable no-unused-vars */
   (e) => {
-/* eslint-enable no-unused-vars */
+    /* eslint-enable no-unused-vars */
     actions.sendData(appDispatcher, inpt.value);
     inpt.value = '';
   },
