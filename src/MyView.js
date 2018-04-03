@@ -9,10 +9,35 @@ class MyView extends View {
   }
 
   isMounted() {
-    actions.logMe(this.dispatcher, 'Инициирован View', 1);
+    actions.logMe(this.dispatcher, 'Инициирован View', 0);
   }
 
-  render(parent, template, data) {
+  render(type, msg) {
+    const log = document.querySelector('.log');
+    const responce = document.querySelector('.view-stub__res-text');
+
+    const el = document.createElement('div');
+    const text = document.createTextNode(msg);
+    el.appendChild(text);
+
+
+    if (type === 1) {
+      const prev = document.querySelector('.server-response');
+      el.classList.add('server-response');
+      if (prev) {
+        responce.insertBefore(el, prev);
+      } else {
+        responce.appendChild(el);
+      }
+    } else {
+      const prev = document.querySelector('.log-msg');
+      el.classList.add('log-msg');
+      if (prev) {
+        log.insertBefore(el, prev);
+      } else {
+        log.appendChild(el);
+      }
+    }
 
   }
 

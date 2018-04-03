@@ -38,18 +38,13 @@ export default class MyStore extends Store {
   }
 
   getData(data) {
-    actions.logMe(this.dispatcher, `Store получил ответ: ${this.getState('serverResp')}${data || ''}`, 0);
+    actions.logMe(this.dispatcher, `Store получил ответ: ${this.getState('serverResp')}${data || ''}`, 1);
     return data;
   }
 
   log(data) {
-    // логгер встроен в стор
-    // 0 - зовем метод вью А
-    // 1 - зовем метод вью Б
-    // вью рендерит лог
-    // как определить, какую вьюху вызывать и какой метод в ней?
-
-    console.log('***NEW', data, data[0], data[1]);
+    this.views[0].render(data[1], data[0]);
+    console.log('***NEW', data[0], data[1]);
   }
 
 }
